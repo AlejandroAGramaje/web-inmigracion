@@ -1,0 +1,2 @@
+# Windows usa CRLF y el CI/Docker (Linux) usan LF: normalizamos a LF para evitar diffs falsos y scripts rotos
+* text=auto eol=lf
