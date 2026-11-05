@@ -8,11 +8,13 @@ Este archivo lo lee Claude Code al empezar cada sesión. Mantenlo actualizado al
 Si escribes tú el código, el proyecto pierde su sentido, aunque funcione.
 
 **Lo que NO debes hacer:**
-- No escribas ni modifiques el código del proyecto (`src/`, `scripts/`, `tests/`, configuración, CI, Dockerfile…) **salvo que yo te lo pida explícitamente** con frases como *"escríbelo tú"* o *"hazlo tú"*.
+
+- No escribas ni modifiques el código del proyecto (`src/`, `scripts/`, `tests/`, configuración, CI, Dockerfile…) **salvo que yo te lo pida explícitamente** con frases como _"escríbelo tú"_ o _"hazlo tú"_.
 - No me des la solución completa de una tarea, aunque te la pida con prisa. Recuérdame esta regla y ofréceme una pista.
 - No "arregles" mi código por tu cuenta. Señálame el problema y deja que lo corrija yo.
 
 **Lo que SÍ debes hacer:**
+
 1. **Explicar la tarea:** qué hay que conseguir, por qué y qué conceptos necesito. Si hay alguno que no conozco, explícamelo antes.
 2. **Proponer el plan en pasos pequeños** y dejar que yo escriba cada uno.
 3. **Dar pistas graduadas cuando me atasque**, de menos a más, y solo pasar al siguiente nivel si te lo pido:
@@ -74,21 +76,21 @@ Colores por continente del prototipo: arcos `window.CC` y ranking `window.CCP`.
 
 Justificación completa en `docs/estudio-tecnologico.md`.
 
-| Área | Elección |
-|---|---|
-| Arquitectura | Sitio **estático** sin backend; los datos se precalculan al construir |
-| Lenguaje | **TypeScript** estricto |
-| Interfaz | **TS puro + módulos** (ver decisiones pendientes) |
-| Visualización | **D3** (`d3-geo`, `geoOrthographic`, `geoInterpolate`, escalas) dibujando en **SVG**; plan B: Canvas |
-| Mapa | TopoJSON **world-atlas 110m**, servido localmente (no desde CDN) + `topojson-client` |
-| Validación de datos | **Zod** |
-| Construcción | **Vite 8**, npm (`package-lock.json`, `npm ci` en CI) |
-| Calidad | **ESLint + typescript-eslint + Prettier**; Husky + lint-staged + commitlint |
-| Tests | **Vitest** (unitarios e integración) y **Playwright** (E2E, regresión visual y accesibilidad con axe-core) |
-| Git | **GitHub Flow**, Conventional Commits, SemVer, squash merge |
-| CI/CD | **GitHub Actions** (runners de GitHub) + **GHCR**; Dependabot; Trivy |
-| Contenedor | Docker **multi-stage**: `node:24-alpine` para compilar y `nginxinc/nginx-unprivileged:alpine` para servir (puerto 8080) |
-| Servidor | Debian estable mínimo + Docker Compose + **Caddy** (HTTPS); despliegue **pull** (el servidor descarga de GHCR) |
+| Área                | Elección                                                                                                                |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Arquitectura        | Sitio **estático** sin backend; los datos se precalculan al construir                                                   |
+| Lenguaje            | **TypeScript** estricto                                                                                                 |
+| Interfaz            | **TS puro + módulos** (ver decisiones pendientes)                                                                       |
+| Visualización       | **D3** (`d3-geo`, `geoOrthographic`, `geoInterpolate`, escalas) dibujando en **SVG**; plan B: Canvas                    |
+| Mapa                | TopoJSON **world-atlas 110m**, servido localmente (no desde CDN) + `topojson-client`                                    |
+| Validación de datos | **Zod**                                                                                                                 |
+| Construcción        | **Vite 8**, npm (`package-lock.json`, `npm ci` en CI)                                                                   |
+| Calidad             | **ESLint + typescript-eslint + Prettier**; Husky + lint-staged + commitlint                                             |
+| Tests               | **Vitest** (unitarios e integración) y **Playwright** (E2E, regresión visual y accesibilidad con axe-core)              |
+| Git                 | **GitHub Flow**, Conventional Commits, SemVer, squash merge                                                             |
+| CI/CD               | **GitHub Actions** (runners de GitHub) + **GHCR**; Dependabot; Trivy                                                    |
+| Contenedor          | Docker **multi-stage**: `node:24-alpine` para compilar y `nginxinc/nginx-unprivileged:alpine` para servir (puerto 8080) |
+| Servidor            | Debian estable mínimo + Docker Compose + **Caddy** (HTTPS); despliegue **pull** (el servidor descarga de GHCR)          |
 
 ## 5. Decisiones pendientes (pregúntame antes de asumir)
 
@@ -111,7 +113,7 @@ src/globe/             proyección, países y flechas (D3)
 src/ui/                paneles, ranking, línea temporal y filtros
 src/styles/            tokens.css (diseño) + estilos
 src/main.ts            punto de entrada: solo conecta las piezas
-tests/unit/ · tests/e2e/
+src/tests/unit/ · tests/e2e/
 docs/adr/              registro de decisiones (ADR)
 docs/estudio-tecnologico.md
 deploy/                compose.yaml, Caddyfile, script de actualización
@@ -170,9 +172,9 @@ Dockerfile · nginx.conf · .dockerignore · .gitattributes
 ### Lecciones teóricas en paralelo (tomo apuntes en Obsidian)
 
 1. ✅ Cómo funciona una web · 2. ✅ JavaScript y TypeScript (más: Python/FastAPI frente a frontend, y comparativa de React, Angular, Vue y Svelte)
-3. Node.js y npm · 4. Vite y bundlers · 5. D3 y SVG · 6. Datos (JSON, CSV, TopoJSON) y Zod · 7. ESLint y Prettier
-8. Testing (Vitest y Playwright) · 9. Git y GitHub · 10. CI/CD con GitHub Actions · 11. Docker
-12. Nginx, Caddy y proxy inverso · 13. Linux, Docker Compose y despliegue
+2. Node.js y npm · 4. Vite y bundlers · 5. D3 y SVG · 6. Datos (JSON, CSV, TopoJSON) y Zod · 7. ESLint y Prettier
+3. Testing (Vitest y Playwright) · 9. Git y GitHub · 10. CI/CD con GitHub Actions · 11. Docker
+4. Nginx, Caddy y proxy inverso · 13. Linux, Docker Compose y despliegue
 
 ## 11. Comandos
 
