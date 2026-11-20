@@ -1,0 +1,25 @@
+name: ci
+
+# De momento se ejecuta en cada push a cualquier rama.
+# Al proteger main añadiremos también `pull_request`.
+on: push
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      # Instalación reproducible a partir de package-lock.json
+      - run: npm ci
+
+      # Un paso por comprobación: si algo falla, se ve en rojo cuál fue
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
